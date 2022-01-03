@@ -1,9 +1,9 @@
-import { API_CONFIG } from './../../config/api.config';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { StorageService } from '../../services/storage.service';
 import { ClienteDTO } from '../../models/cliente.dto';
 import { ClienteService } from '../../services/domain/cliente.service';
-import { StorageService } from '../../services/storage.service';
+import { API_CONFIG } from './../../config/api.config';
 
 @IonicPage()
 @Component({
@@ -27,18 +27,18 @@ export class ProfilePage {
       this.clienteService.findByEmail(localUser.email)
         .subscribe(response => {
           this.cliente = response;
-          this.getImageIfExists;
+          this.getImageIfExists();
         },
-        error => {})
+        error => {});
     }
   }
 
-  getImageIfExists(){
+  getImageIfExists() {
     this.clienteService.getImageFromBucket(this.cliente.id)
-    .subscribe(response =>{
+    .subscribe(response => {
       this.cliente.imageUrl = `${API_CONFIG.bucketBaseUrl}/cp${this.cliente.id}.jpg`;
     },
-    error =>{});
+    error => {});
   }
 
 }

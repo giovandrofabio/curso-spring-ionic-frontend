@@ -2,7 +2,6 @@ import { Cart } from './../../models/cart';
 import { Injectable } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { ProdutoDTO } from '../../models/produto.dto';
-import { Item } from 'ionic-angular';
 
 @Injectable()
 export class CartService {
